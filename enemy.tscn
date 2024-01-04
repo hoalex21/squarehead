@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cii8bu3jc736u"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_ajh67"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_unnme"]
+
+[sub_resource type="Gradient" id="Gradient_sukl2"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_was6q"]
+gradient = SubResource("Gradient_sukl2")
+
+[node name="Enemy" type="RigidBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 2
+gravity_scale = 2.66454e-15
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_ajh67")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3.2, 3.2)
+shape = SubResource("RectangleShape2D_unnme")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_was6q")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
