@@ -27,4 +27,4 @@ func _process(delta):
 		
 		if "bullet" in groups:
 			queue_free()
-			collider._on_body_entered(self)
+			collider.hit_enemy()

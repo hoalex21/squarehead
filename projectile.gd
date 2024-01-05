@@ -20,6 +20,7 @@ func _process(delta):
 func _on_body_entered(body):
 	if body.is_in_group("wall"):
 		queue_free()
-	
-	if body.is_in_group("enemy"):
-		queue_free()
+
+
+func hit_enemy():
+	queue_free()
