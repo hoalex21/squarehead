@@ -1,16 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://kluq7r1u7laj"]
+[gd_scene load_steps=6 format=3 uid="uid://kluq7r1u7laj"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_s1rlq"]
 [ext_resource type="PackedScene" uid="uid://dbfwul4wpt4t" path="res://player.tscn" id="1_w4mgs"]
 [ext_resource type="PackedScene" uid="uid://cii8bu3jc736u" path="res://enemy.tscn" id="2_swwk3"]
 [ext_resource type="PackedScene" uid="uid://ccf28lnqqsfln" path="res://map.tscn" id="4_sgk08"]
-
-[sub_resource type="Gradient" id="Gradient_wl40a"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.271899, 7.50098e-08, 1.29238e-09, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ocn15"]
-gradient = SubResource("Gradient_wl40a")
 
 [sub_resource type="Curve2D" id="Curve2D_wnjrt"]
 _data = {
@@ -21,11 +14,6 @@ point_count = 5
 [node name="Main" type="Node"]
 script = ExtResource("1_s1rlq")
 enemy_scene = ExtResource("2_swwk3")
-
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(1.49995, -3.50009)
-scale = Vector2(93.7031, 78.4219)
-texture = SubResource("GradientTexture2D_ocn15")
 
 [node name="Map" parent="." instance=ExtResource("4_sgk08")]
 scale = Vector2(4, 4)

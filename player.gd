@@ -24,39 +24,39 @@ func _ready():
 func _process(delta):
 	
 	# Movement
-	var motion = Vector2.ZERO # The player's movement vector.
+	velocity = Vector2.ZERO # The player's movement vector.
 	
 	if Input.is_action_pressed("move_right"):
 		if $AnimatedSprite2D.animation != "walk_down" && $AnimatedSprite2D.animation != "walk_up":
 			$AnimatedSprite2D.play("walk_right")
-		motion.x += 1
+		velocity.x += 1
 	elif $AnimatedSprite2D.animation == "walk_right":
 		$AnimatedSprite2D.play("idle_right")
 	
 	if Input.is_action_pressed("move_left"):
 		if $AnimatedSprite2D.animation != "walk_down" && $AnimatedSprite2D.animation != "walk_up":
 			$AnimatedSprite2D.play("walk_left")
-		motion.x -= 1
+		velocity.x -= 1
 	elif $AnimatedSprite2D.animation == "walk_left":
 		$AnimatedSprite2D.play("idle_left")
 	
 	if Input.is_action_pressed("move_down"):
 		$AnimatedSprite2D.play("walk_down")
-		motion.y += 1
+		velocity.y += 1
 	elif $AnimatedSprite2D.animation == "walk_down":
 			$AnimatedSprite2D.play("idle_down")
 	
 	if Input.is_action_pressed("move_up"):
 		$AnimatedSprite2D.play("walk_up")
-		motion.y -= 1
+		velocity.y -= 1
 	elif $AnimatedSprite2D.animation == "walk_up":
 			$AnimatedSprite2D.play("idle_up")
 	
 	
-	if motion.length() > 0:
-		motion = motion.normalized() * delta * speed
+	if velocity.length() > 0:
+		velocity = velocity.normalized() * speed
 	
-	move_and_collide(motion)
+	move_and_slide()
 	
 	# Shooting
 	if Input.is_action_pressed("arrow_right"):
