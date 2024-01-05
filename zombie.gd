@@ -30,6 +30,16 @@ func _process(_delta):
 	elif direction.y < 0:
 		$AnimatedSprite2D.play("walk_up")
 	
+	if direction.x == 0 && direction.y == 0:
+		if $AnimatedSprite2D.animation == "walk_right":
+			$AnimatedSprite2D.play("idle_right")
+		elif $AnimatedSprite2D.animation == "walk_left":
+			$AnimatedSprite2D.play("idle_left")
+		elif $AnimatedSprite2D.animation == "walk_down":
+			$AnimatedSprite2D.play("idle_down")
+		elif $AnimatedSprite2D.animation == "walk_up":
+			$AnimatedSprite2D.play("idle_up")
+	
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()

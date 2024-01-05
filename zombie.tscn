@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://cii8bu3jc736u"]
+[gd_scene load_steps=14 format=3 uid="uid://cii8bu3jc736u"]
 
 [ext_resource type="Script" path="res://zombie.gd" id="1_60p8g"]
 [ext_resource type="Texture2D" uid="uid://dxr5x2nuhc8eu" path="res://images/enemy/zombie_down_left.png" id="2_4hl6n"]
 [ext_resource type="Texture2D" uid="uid://cys4d0fsgyxvn" path="res://images/enemy/zombie_idle_down.png" id="2_6gy3p"]
 [ext_resource type="Texture2D" uid="uid://cwgh6tgewpu11" path="res://images/enemy/zombie_down_right.png" id="3_1ubtu"]
 [ext_resource type="Texture2D" uid="uid://cse3nc045vqti" path="res://images/enemy/zombie_left.png" id="4_7s4i2"]
+[ext_resource type="Texture2D" uid="uid://uoanm1ykg36p" path="res://images/enemy/zombie_idle_up.png" id="5_ku7y2"]
 [ext_resource type="Texture2D" uid="uid://bhqupug4n5r48" path="res://images/enemy/zombie_left_0.png" id="5_uylwp"]
 [ext_resource type="Texture2D" uid="uid://d21b40dt8ux12" path="res://images/enemy/zombie_right.png" id="6_la2ey"]
 [ext_resource type="Texture2D" uid="uid://fmduo87yu6kx" path="res://images/enemy/zombie_right_0.png" id="7_dvo7o"]
@@ -21,6 +22,30 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_7s4i2")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_la2ey")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ku7y2")
+}],
+"loop": true,
+"name": &"idle_up",
 "speed": 5.0
 }, {
 "frames": [{
@@ -86,4 +111,4 @@ debug_enabled = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_5lm40")
-animation = &"walk_right"
+animation = &"idle_left"
