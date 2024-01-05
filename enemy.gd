@@ -25,6 +25,6 @@ func _process(delta):
 		var collider = collision.get_collider()
 		var groups = collider.get_groups()
 		
-		if "bullet" in groups:
+		if "projectile" in groups:
 			queue_free()
 			collider.hit_enemy()
