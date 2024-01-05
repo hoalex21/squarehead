@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends CharacterBody2D
 
 @export var speed = 400
 var player
@@ -11,13 +11,20 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var player_position = player.position
-	var target_position = (player_position - position).normalized()
+	var direction = Vector2.ZERO
 	
-	var velocity = delta * speed
-	move_and_collide(target_position * velocity)
-
-
-func _on_body_entered(body):
-	if body.is_in_group("bullet"):
-		queue_free()
+	$NavigationAgent2D.target_position = player.position
+	direction = $NavigationAgent2D.get_next_path_position() - global_position
+	direction = direction.normalized()
+	
+	velocity = direction * speed
+	move_and_slide()
+	
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		var groups = collider.get_groups()
+		
+		if "bullet" in groups:
+			queue_free()
+			collider._on_body_entered(self)

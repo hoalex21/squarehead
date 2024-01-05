@@ -13,6 +13,7 @@ var weapon: PackedScene
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	weapon = preload("res://projectile.tscn")
+	
 	add_child(shot_speed_timer)
 	shot_speed_timer.set_one_shot(true)
 	shot_speed_timer.start()
