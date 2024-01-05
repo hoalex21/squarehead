@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://ccf28lnqqsfln"]
 
-[ext_resource type="Texture2D" uid="uid://ckw3yxwlscui0" path="res://images/black_square.png" id="1_mlya2"]
+[ext_resource type="Texture2D" uid="uid://ckw3yxwlscui0" path="res://images/tilemap/black_square.png" id="1_gekgh"]
 [ext_resource type="Texture2D" uid="uid://bc4gscotulkf6" path="res://white_square.png" id="2_vt5u0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fagas"]
-texture = ExtResource("1_mlya2")
+texture = ExtResource("1_gekgh")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b53qp3f1t0l8r"
-path="res://.godot/imported/squarehead_down_1.png-ceeee15cb25ef4e1c6903e3abba6927f.ctex"
+uid="uid://d21b40dt8ux12"
+path="res://.godot/imported/zombie_right.png-d4e948f9a65ddf0f76ebf3029e277734.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/squarehead_down_1.png"
-dest_files=["res://.godot/imported/squarehead_down_1.png-ceeee15cb25ef4e1c6903e3abba6927f.ctex"]
+source_file="res://images/enemy/zombie_right.png"
+dest_files=["res://.godot/imported/zombie_right.png-d4e948f9a65ddf0f76ebf3029e277734.ctex"]
 
 [params]
 

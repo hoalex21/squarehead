@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://main.gd" id="1_s1rlq"]
 [ext_resource type="PackedScene" uid="uid://dbfwul4wpt4t" path="res://player.tscn" id="1_w4mgs"]
-[ext_resource type="PackedScene" uid="uid://cii8bu3jc736u" path="res://enemy.tscn" id="2_swwk3"]
+[ext_resource type="PackedScene" uid="uid://cii8bu3jc736u" path="res://zombie.tscn" id="2_8a5e2"]
 [ext_resource type="PackedScene" uid="uid://ccf28lnqqsfln" path="res://map.tscn" id="4_sgk08"]
 
 [sub_resource type="Curve2D" id="Curve2D_wnjrt"]
@@ -13,7 +13,7 @@ point_count = 5
 
 [node name="Main" type="Node"]
 script = ExtResource("1_s1rlq")
-enemy_scene = ExtResource("2_swwk3")
+enemy_scene = ExtResource("2_8a5e2")
 
 [node name="Map" parent="." instance=ExtResource("4_sgk08")]
 scale = Vector2(4, 4)

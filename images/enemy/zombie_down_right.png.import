@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckw3yxwlscui0"
-path="res://.godot/imported/black_square.png-43fff7d596d8f89481e8027ff07abb26.ctex"
+uid="uid://cwgh6tgewpu11"
+path="res://.godot/imported/zombie_down_right.png-faca2c34ca7be25e659236e93c27e945.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/black_square.png"
-dest_files=["res://.godot/imported/black_square.png-43fff7d596d8f89481e8027ff07abb26.ctex"]
+source_file="res://images/enemy/zombie_down_right.png"
+dest_files=["res://.godot/imported/zombie_down_right.png-faca2c34ca7be25e659236e93c27e945.ctex"]
 
 [params]
 

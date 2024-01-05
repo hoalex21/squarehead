@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bn43a7dttptsp"
-path="res://.godot/imported/squarehead_up_1.png-6629421fb8b8d3d03522ae4b05e0cc1a.ctex"
+uid="uid://btu630wfp7sn2"
+path="res://.godot/imported/squarehead_right.png-3c055b586a6f0ab3b2caa7b02a9a7b51.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/squarehead_up_1.png"
-dest_files=["res://.godot/imported/squarehead_up_1.png-6629421fb8b8d3d03522ae4b05e0cc1a.ctex"]
+source_file="res://images/player/squarehead_right.png"
+dest_files=["res://.godot/imported/squarehead_right.png-3c055b586a6f0ab3b2caa7b02a9a7b51.ctex"]
 
 [params]
 
