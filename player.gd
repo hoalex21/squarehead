@@ -74,6 +74,14 @@ func fire(x, y):
 	if shot_speed_timer.is_stopped():
 		var weapon_instance = weapon.instantiate()
 		weapon_instance.position = global_position
+		if y == 0:
+			if x > 0:
+				weapon_instance.rotation = PI / 2
+			else:
+				weapon_instance.rotation = -PI / 2
+		else:
+			if y > 0:
+				weapon_instance.rotation = PI
 		weapon_instance.apply_impulse(
 			Vector2(x, y), 
 			Vector2.ZERO
