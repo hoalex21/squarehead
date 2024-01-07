@@ -1,12 +1,14 @@
 extends CharacterBody2D
 
+var dead = false
+
 @export var health = 3
 @export var armor = 0
 @export var speed = 500
 
 @export var weapon_speed = 1500
 
-@export var invincible_speed = 3
+@export var invincible_speed = 2
 var invincible_timer = Timer.new()
 
 @export var shot_speed = 1
@@ -38,47 +40,48 @@ func _process(_delta):
 	# Movement
 	velocity = Vector2.ZERO # The player's movement vector.
 	
-	if Input.is_action_pressed("move_right"):
-		if animated_sprite.animation != "walk_down" && animated_sprite.animation != "walk_up":
-			animated_sprite.play("walk_right")
-		velocity.x += 1
-	elif animated_sprite.animation == "walk_right":
-		animated_sprite.play("idle_right")
-	
-	if Input.is_action_pressed("move_left"):
-		if animated_sprite.animation != "walk_down" && animated_sprite.animation != "walk_up":
-			animated_sprite.play("walk_left")
-		velocity.x -= 1
-	elif animated_sprite.animation == "walk_left":
-		animated_sprite.play("idle_left")
-	
-	if Input.is_action_pressed("move_down"):
-		animated_sprite.play("walk_down")
-		velocity.y += 1
-	elif animated_sprite.animation == "walk_down":
-			animated_sprite.play("idle_down")
-	
-	if Input.is_action_pressed("move_up"):
-		animated_sprite.play("walk_up")
-		velocity.y -= 1
-	elif animated_sprite.animation == "walk_up":
-			animated_sprite.play("idle_up")
-	
-	
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
-	
-	move_and_slide()
-	
-	# Shooting
-	if Input.is_action_pressed("arrow_right"):
-		fire(weapon_speed, 0)
-	elif Input.is_action_pressed("arrow_left"):
-		fire(-weapon_speed, 0)
-	if Input.is_action_pressed("arrow_down"):
-		fire(0, weapon_speed)
-	if Input.is_action_pressed("arrow_up"):
-		fire(0, -weapon_speed)
+	if not dead:
+		if Input.is_action_pressed("move_right"):
+			if animated_sprite.animation != "walk_down" && animated_sprite.animation != "walk_up":
+				animated_sprite.play("walk_right")
+			velocity.x += 1
+		elif animated_sprite.animation == "walk_right":
+			animated_sprite.play("idle_right")
+		
+		if Input.is_action_pressed("move_left"):
+			if animated_sprite.animation != "walk_down" && animated_sprite.animation != "walk_up":
+				animated_sprite.play("walk_left")
+			velocity.x -= 1
+		elif animated_sprite.animation == "walk_left":
+			animated_sprite.play("idle_left")
+		
+		if Input.is_action_pressed("move_down"):
+			animated_sprite.play("walk_down")
+			velocity.y += 1
+		elif animated_sprite.animation == "walk_down":
+				animated_sprite.play("idle_down")
+		
+		if Input.is_action_pressed("move_up"):
+			animated_sprite.play("walk_up")
+			velocity.y -= 1
+		elif animated_sprite.animation == "walk_up":
+				animated_sprite.play("idle_up")
+		
+		
+		if velocity.length() > 0:
+			velocity = velocity.normalized() * speed
+		
+		move_and_slide()
+		
+		# Shooting
+		if Input.is_action_pressed("arrow_right"):
+			fire(weapon_speed, 0)
+		elif Input.is_action_pressed("arrow_left"):
+			fire(-weapon_speed, 0)
+		if Input.is_action_pressed("arrow_down"):
+			fire(0, weapon_speed)
+		if Input.is_action_pressed("arrow_up"):
+			fire(0, -weapon_speed)
 
 
 func fire(x, y):
@@ -110,3 +113,8 @@ func take_damage(num):
 func health_add(num):
 	if health < 5:
 		health += num
+
+
+func die():
+	hide()
+	dead = true

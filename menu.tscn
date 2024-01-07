@@ -1,29 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://dyrxjyw218uqo"]
+[gd_scene load_steps=6 format=3 uid="uid://dyrxjyw218uqo"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_vj2no"]
-[ext_resource type="FontFile" uid="uid://ys85meamkvgb" path="res://PressStart2P-Regular.ttf" id="2_sicg0"]
+[ext_resource type="Theme" uid="uid://licvsw1p8u1" path="res://hud_theme.tres" id="2_hs2iw"]
+[ext_resource type="Theme" uid="uid://1a1x3iilp1q6" path="res://menu_theme.tres" id="3_l08ts"]
 
 [sub_resource type="Gradient" id="Gradient_ty78j"]
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_s1a5t"]
 gradient = SubResource("Gradient_ty78j")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nfk3x"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g7uq4"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5h6yn"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1kqch"]
-
-[sub_resource type="Theme" id="Theme_5pr2t"]
-Button/colors/font_focus_color = Color(0, 1, 0, 1)
-Button/colors/font_hover_color = Color(0, 1, 0, 1)
-Button/fonts/font = ExtResource("2_sicg0")
-Button/styles/focus = SubResource("StyleBoxEmpty_nfk3x")
-Button/styles/hover = SubResource("StyleBoxEmpty_g7uq4")
-Button/styles/normal = SubResource("StyleBoxEmpty_5h6yn")
-Button/styles/pressed = SubResource("StyleBoxEmpty_1kqch")
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -43,6 +27,22 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_s1a5t")
 
+[node name="SquareHead" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -0.5
+offset_top = 100.0
+offset_right = 0.5
+offset_bottom = 123.0
+grow_horizontal = 2
+theme = ExtResource("2_hs2iw")
+theme_override_font_sizes/font_size = 128
+text = "SquareHead"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 2
@@ -52,7 +52,7 @@ offset_left = 50.0
 offset_top = -505.0
 offset_right = 550.0
 grow_vertical = 0
-theme = SubResource("Theme_5pr2t")
+theme = ExtResource("3_l08ts")
 
 [node name="Start" type="Button" parent="VBoxContainer"]
 layout_mode = 2
