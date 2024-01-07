@@ -1,7 +1,9 @@
 extends Node
 
-
 @export var enemy_scene: PackedScene
+var enemy_timer: Timer
+
+var player: Node
 
 var score_label: Label
 var score = 0
@@ -9,10 +11,15 @@ var score = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("Score:", score)
-	$EnemyTimer.start()
+	player = $Player
+	
+	enemy_timer = $EnemyTimer
+	enemy_timer.start()
+	
 	score_label = $CanvasLayer/Score
 	score_label.text = str(score)
+	
+	health_display()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -39,3 +46,12 @@ func score_add(num):
 func score_subtract(num):
 	score -= num
 	score_label.text = str(score)
+
+
+func health_display():
+	for i in range(0, 5):
+		var node_string = "CanvasLayer/Heart Grid Container/Heart %s" % str(i+1)
+		if i < player.health:
+			get_node(node_string).texture = load("res://images/heart.png")
+		else:
+			get_node(node_string).texture = load("res://images/empty_heart.png")

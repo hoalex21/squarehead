@@ -1,13 +1,22 @@
 extends CharacterBody2D
 
 @export var speed = 400
+
+var animated_sprite: AnimatedSprite2D
+
+var navigation_agent: NavigationAgent2D
+
 var player
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = get_parent().get_node("Player")
-	$AnimatedSprite2D.play("idle_down")
+	
+	animated_sprite = $AnimatedSprite2D
+	animated_sprite.play("idle_down")
+	
+	navigation_agent = $NavigationAgent2D
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -15,31 +24,31 @@ func _process(delta):
 	var direction = Vector2.ZERO
 	
 	if player:
-		$NavigationAgent2D.target_position = player.position
-		direction = $NavigationAgent2D.get_next_path_position() - global_position
+		navigation_agent.target_position = player.position
+		direction = navigation_agent.get_next_path_position() - global_position
 		direction = direction.normalized()
 	
 	velocity = direction * speed
 	var collision = move_and_collide(velocity * delta)
 	
 	if direction.x > 0 && abs(direction.y) - direction.x < 0:
-		$AnimatedSprite2D.play("walk_right")
+		animated_sprite.play("walk_right")
 	elif direction.x < 0 && abs(direction.y) + direction.x < 0:
-		$AnimatedSprite2D.play("walk_left")
+		animated_sprite.play("walk_left")
 	elif direction.y > 0:
-		$AnimatedSprite2D.play("walk_down")
+		animated_sprite.play("walk_down")
 	elif direction.y < 0:
-		$AnimatedSprite2D.play("walk_up")
+		animated_sprite.play("walk_up")
 	
 	if direction.x == 0 && direction.y == 0:
-		if $AnimatedSprite2D.animation == "walk_right":
-			$AnimatedSprite2D.play("idle_right")
-		elif $AnimatedSprite2D.animation == "walk_left":
-			$AnimatedSprite2D.play("idle_left")
-		elif $AnimatedSprite2D.animation == "walk_down":
-			$AnimatedSprite2D.play("idle_down")
-		elif $AnimatedSprite2D.animation == "walk_up":
-			$AnimatedSprite2D.play("idle_up")
+		if animated_sprite.animation == "walk_right":
+			animated_sprite.play("idle_right")
+		elif animated_sprite.animation == "walk_left":
+			animated_sprite.play("idle_left")
+		elif animated_sprite.animation == "walk_down":
+			animated_sprite.play("idle_down")
+		elif animated_sprite.animation == "walk_up":
+			animated_sprite.play("idle_up")
 	
 	if collision:
 		var collider = collision.get_collider()
@@ -51,3 +60,7 @@ func _process(delta):
 				get_parent().score_add(100)
 				queue_free()
 				collider.hit_enemy()
+			
+			if "player" in groups:
+				get_parent().health_display()
+				collider.take_damage(1)

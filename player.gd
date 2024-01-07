@@ -3,9 +3,16 @@ extends CharacterBody2D
 @export var health = 3
 @export var armor = 0
 @export var speed = 500
-@export var shot_speed = 1
+
 @export var weapon_speed = 1500
+
+@export var invincible_speed = 3
+var invincible_timer = Timer.new()
+
+@export var shot_speed = 1
 var shot_speed_timer = Timer.new()
+
+var animated_sprite: AnimatedSprite2D
 
 var weapon: PackedScene
 
@@ -14,11 +21,15 @@ var weapon: PackedScene
 func _ready():
 	weapon = preload("res://projectile.tscn")
 	
+	add_child(invincible_timer)
+	invincible_timer.set_one_shot(true)
+	
 	add_child(shot_speed_timer)
 	shot_speed_timer.set_one_shot(true)
 	shot_speed_timer.start()
 	
-	$AnimatedSprite2D.animation = "idle_down"
+	animated_sprite = $AnimatedSprite2D
+	animated_sprite.animation = "idle_down"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,30 +39,30 @@ func _process(_delta):
 	velocity = Vector2.ZERO # The player's movement vector.
 	
 	if Input.is_action_pressed("move_right"):
-		if $AnimatedSprite2D.animation != "walk_down" && $AnimatedSprite2D.animation != "walk_up":
-			$AnimatedSprite2D.play("walk_right")
+		if animated_sprite.animation != "walk_down" && animated_sprite.animation != "walk_up":
+			animated_sprite.play("walk_right")
 		velocity.x += 1
-	elif $AnimatedSprite2D.animation == "walk_right":
-		$AnimatedSprite2D.play("idle_right")
+	elif animated_sprite.animation == "walk_right":
+		animated_sprite.play("idle_right")
 	
 	if Input.is_action_pressed("move_left"):
-		if $AnimatedSprite2D.animation != "walk_down" && $AnimatedSprite2D.animation != "walk_up":
-			$AnimatedSprite2D.play("walk_left")
+		if animated_sprite.animation != "walk_down" && animated_sprite.animation != "walk_up":
+			animated_sprite.play("walk_left")
 		velocity.x -= 1
-	elif $AnimatedSprite2D.animation == "walk_left":
-		$AnimatedSprite2D.play("idle_left")
+	elif animated_sprite.animation == "walk_left":
+		animated_sprite.play("idle_left")
 	
 	if Input.is_action_pressed("move_down"):
-		$AnimatedSprite2D.play("walk_down")
+		animated_sprite.play("walk_down")
 		velocity.y += 1
-	elif $AnimatedSprite2D.animation == "walk_down":
-			$AnimatedSprite2D.play("idle_down")
+	elif animated_sprite.animation == "walk_down":
+			animated_sprite.play("idle_down")
 	
 	if Input.is_action_pressed("move_up"):
-		$AnimatedSprite2D.play("walk_up")
+		animated_sprite.play("walk_up")
 		velocity.y -= 1
-	elif $AnimatedSprite2D.animation == "walk_up":
-			$AnimatedSprite2D.play("idle_up")
+	elif animated_sprite.animation == "walk_up":
+			animated_sprite.play("idle_up")
 	
 	
 	if velocity.length() > 0:
@@ -88,3 +99,9 @@ func fire(x, y):
 		)
 		get_tree().get_root().call_deferred("add_child", weapon_instance)
 		shot_speed_timer.start(shot_speed)
+
+
+func take_damage(num):
+	if invincible_timer.is_stopped():
+		health -= num
+		invincible_timer.start(invincible_speed)
