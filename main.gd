@@ -18,13 +18,11 @@ func _ready():
 	
 	score_label = $CanvasLayer/Score
 	score_label.text = str(score)
-	
-	health_display()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	pass
+	health_display()
 
 
 func _on_enemy_timer_timeout():

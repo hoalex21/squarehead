@@ -7,6 +7,7 @@ var animated_sprite: AnimatedSprite2D
 var navigation_agent: NavigationAgent2D
 
 var player
+var heart_scene: PackedScene
 
 
 # Called when the node enters the scene tree for the first time.
@@ -17,6 +18,8 @@ func _ready():
 	animated_sprite.play("idle_down")
 	
 	navigation_agent = $NavigationAgent2D
+	
+	heart_scene = preload("res://heart.tscn")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -57,10 +60,15 @@ func _process(delta):
 			var groups = collider.get_groups()
 			
 			if "projectile" in groups:
+				var heart_random = randi_range(0, 14)
+				if heart_random == 0:
+					var heart = heart_scene.instantiate()
+					heart.position = global_position
+					get_parent().add_child(heart)
+					
 				get_parent().score_add(100)
 				queue_free()
 				collider.hit_enemy()
 			
 			if "player" in groups:
-				get_parent().health_display()
 				collider.take_damage(1)

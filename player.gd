@@ -105,3 +105,8 @@ func take_damage(num):
 	if invincible_timer.is_stopped():
 		health -= num
 		invincible_timer.start(invincible_speed)
+
+
+func health_add(num):
+	if health < 5:
+		health += num
