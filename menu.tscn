@@ -1,6 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://dyrxjyw218uqo"]
+[gd_scene load_steps=10 format=3 uid="uid://dyrxjyw218uqo"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_vj2no"]
+[ext_resource type="FontFile" uid="uid://ys85meamkvgb" path="res://PressStart2P-Regular.ttf" id="2_sicg0"]
+
+[sub_resource type="Gradient" id="Gradient_ty78j"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s1a5t"]
+gradient = SubResource("Gradient_ty78j")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nfk3x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g7uq4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5h6yn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1kqch"]
+
+[sub_resource type="Theme" id="Theme_5pr2t"]
+Button/colors/font_focus_color = Color(0, 1, 0, 1)
+Button/colors/font_hover_color = Color(0, 1, 0, 1)
+Button/fonts/font = ExtResource("2_sicg0")
+Button/styles/focus = SubResource("StyleBoxEmpty_nfk3x")
+Button/styles/hover = SubResource("StyleBoxEmpty_g7uq4")
+Button/styles/normal = SubResource("StyleBoxEmpty_5h6yn")
+Button/styles/pressed = SubResource("StyleBoxEmpty_1kqch")
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -11,36 +34,46 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vj2no")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -252.5
-offset_right = 250.0
-offset_bottom = 252.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = SubResource("GradientTexture2D_s1a5t")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -505.0
+offset_right = 550.0
+grow_vertical = 0
+theme = SubResource("Theme_5pr2t")
 
 [node name="Start" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 64
 text = "Start"
 
 [node name="Options" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 64
 text = "Options"
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 64
 text = "Quit"
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
