@@ -11,15 +11,16 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(delta):
 	var direction = Vector2.ZERO
 	
-	$NavigationAgent2D.target_position = player.position
-	direction = $NavigationAgent2D.get_next_path_position() - global_position
-	direction = direction.normalized()
+	if player:
+		$NavigationAgent2D.target_position = player.position
+		direction = $NavigationAgent2D.get_next_path_position() - global_position
+		direction = direction.normalized()
 	
 	velocity = direction * speed
-	move_and_slide()
+	var collision = move_and_collide(velocity * delta)
 	
 	if direction.x > 0 && abs(direction.y) - direction.x < 0:
 		$AnimatedSprite2D.play("walk_right")
@@ -40,11 +41,13 @@ func _process(_delta):
 		elif $AnimatedSprite2D.animation == "walk_up":
 			$AnimatedSprite2D.play("idle_up")
 	
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
+	if collision:
 		var collider = collision.get_collider()
-		var groups = collider.get_groups()
 		
-		if "projectile" in groups:
-			queue_free()
-			collider.hit_enemy()
+		if collider:
+			var groups = collider.get_groups()
+			
+			if "projectile" in groups:
+				get_parent().score_add(100)
+				queue_free()
+				collider.hit_enemy()

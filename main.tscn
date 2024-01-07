@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://kluq7r1u7laj"]
+[gd_scene load_steps=7 format=3 uid="uid://kluq7r1u7laj"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_s1rlq"]
 [ext_resource type="PackedScene" uid="uid://dbfwul4wpt4t" path="res://player.tscn" id="1_w4mgs"]
 [ext_resource type="PackedScene" uid="uid://cii8bu3jc736u" path="res://zombie.tscn" id="2_8a5e2"]
 [ext_resource type="PackedScene" uid="uid://ccf28lnqqsfln" path="res://map.tscn" id="4_sgk08"]
+[ext_resource type="Texture2D" uid="uid://m8r66hqyroiq" path="res://images/heart.png" id="5_bwxkm"]
 
 [sub_resource type="Curve2D" id="Curve2D_wnjrt"]
 _data = {
@@ -31,5 +32,58 @@ position = Vector2(-1216, -1216)
 
 [node name="EnemyTimer" type="Timer" parent="."]
 wait_time = 3.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Heart Grid Container" type="GridContainer" parent="CanvasLayer"]
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 726.0
+offset_bottom = 170.0
+columns = 5
+
+[node name="Heart 1" type="TextureRect" parent="CanvasLayer/Heart Grid Container"]
+custom_minimum_size = Vector2(66, 60)
+layout_mode = 2
+texture = ExtResource("5_bwxkm")
+expand_mode = 1
+
+[node name="Heart 2" type="TextureRect" parent="CanvasLayer/Heart Grid Container"]
+custom_minimum_size = Vector2(66, 60)
+layout_mode = 2
+texture = ExtResource("5_bwxkm")
+expand_mode = 1
+
+[node name="Heart 3" type="TextureRect" parent="CanvasLayer/Heart Grid Container"]
+custom_minimum_size = Vector2(66, 60)
+layout_mode = 2
+texture = ExtResource("5_bwxkm")
+expand_mode = 1
+
+[node name="Heart 4" type="TextureRect" parent="CanvasLayer/Heart Grid Container"]
+custom_minimum_size = Vector2(66, 60)
+layout_mode = 2
+texture = ExtResource("5_bwxkm")
+expand_mode = 1
+
+[node name="Heart 5" type="TextureRect" parent="CanvasLayer/Heart Grid Container"]
+custom_minimum_size = Vector2(66, 60)
+layout_mode = 2
+texture = ExtResource("5_bwxkm")
+expand_mode = 1
+
+[node name="Score" type="Label" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cys4d0fsgyxvn"
-path="res://.godot/imported/zombie_idle_down.png-c98c0df75a09ed4cd365aca1c0a9e1d3.ctex"
+uid="uid://dxr5x2nuhc8eu"
+path="res://.godot/imported/zombie_down_left.png-07480b246c77a702d80dcf74298bada2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/enemy/zombie_idle_down.png"
-dest_files=["res://.godot/imported/zombie_idle_down.png-c98c0df75a09ed4cd365aca1c0a9e1d3.ctex"]
+source_file="res://images/zombie/zombie_down_left.png"
+dest_files=["res://.godot/imported/zombie_down_left.png-07480b246c77a702d80dcf74298bada2.ctex"]
 
 [params]
 

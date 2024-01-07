@@ -1,16 +1,16 @@
 [gd_scene load_steps=14 format=3 uid="uid://cii8bu3jc736u"]
 
 [ext_resource type="Script" path="res://zombie.gd" id="1_60p8g"]
-[ext_resource type="Texture2D" uid="uid://dxr5x2nuhc8eu" path="res://images/enemy/zombie_down_left.png" id="2_4hl6n"]
-[ext_resource type="Texture2D" uid="uid://cys4d0fsgyxvn" path="res://images/enemy/zombie_idle_down.png" id="2_6gy3p"]
-[ext_resource type="Texture2D" uid="uid://cwgh6tgewpu11" path="res://images/enemy/zombie_down_right.png" id="3_1ubtu"]
-[ext_resource type="Texture2D" uid="uid://cse3nc045vqti" path="res://images/enemy/zombie_left.png" id="4_7s4i2"]
-[ext_resource type="Texture2D" uid="uid://uoanm1ykg36p" path="res://images/enemy/zombie_idle_up.png" id="5_ku7y2"]
-[ext_resource type="Texture2D" uid="uid://bhqupug4n5r48" path="res://images/enemy/zombie_left_0.png" id="5_uylwp"]
-[ext_resource type="Texture2D" uid="uid://d21b40dt8ux12" path="res://images/enemy/zombie_right.png" id="6_la2ey"]
-[ext_resource type="Texture2D" uid="uid://fmduo87yu6kx" path="res://images/enemy/zombie_right_0.png" id="7_dvo7o"]
-[ext_resource type="Texture2D" uid="uid://pvgcb0o0vu3i" path="res://images/enemy/zombie_up_left.png" id="8_w4f8o"]
-[ext_resource type="Texture2D" uid="uid://b7f7f1vjcfuap" path="res://images/enemy/zombie_up_right.png" id="9_wdt0n"]
+[ext_resource type="Texture2D" uid="uid://cys4d0fsgyxvn" path="res://images/zombie/zombie_idle_down.png" id="2_ab0d0"]
+[ext_resource type="Texture2D" uid="uid://cse3nc045vqti" path="res://images/zombie/zombie_left.png" id="3_esmt1"]
+[ext_resource type="Texture2D" uid="uid://d21b40dt8ux12" path="res://images/zombie/zombie_right.png" id="4_w40k5"]
+[ext_resource type="Texture2D" uid="uid://uoanm1ykg36p" path="res://images/zombie/zombie_idle_up.png" id="5_x6cuv"]
+[ext_resource type="Texture2D" uid="uid://dxr5x2nuhc8eu" path="res://images/zombie/zombie_down_left.png" id="6_46lci"]
+[ext_resource type="Texture2D" uid="uid://cwgh6tgewpu11" path="res://images/zombie/zombie_down_right.png" id="7_y3q4d"]
+[ext_resource type="Texture2D" uid="uid://bhqupug4n5r48" path="res://images/zombie/zombie_left_0.png" id="8_n1qpd"]
+[ext_resource type="Texture2D" uid="uid://fmduo87yu6kx" path="res://images/zombie/zombie_right_0.png" id="9_2xs00"]
+[ext_resource type="Texture2D" uid="uid://pvgcb0o0vu3i" path="res://images/zombie/zombie_up_left.png" id="10_ool0x"]
+[ext_resource type="Texture2D" uid="uid://b7f7f1vjcfuap" path="res://images/zombie/zombie_up_right.png" id="11_i36sn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_unnme"]
 
@@ -18,7 +18,7 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_6gy3p")
+"texture": ExtResource("2_ab0d0")
 }],
 "loop": true,
 "name": &"idle_down",
@@ -26,7 +26,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_7s4i2")
+"texture": ExtResource("3_esmt1")
 }],
 "loop": true,
 "name": &"idle_left",
@@ -34,7 +34,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_la2ey")
+"texture": ExtResource("4_w40k5")
 }],
 "loop": true,
 "name": &"idle_right",
@@ -42,7 +42,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_ku7y2")
+"texture": ExtResource("5_x6cuv")
 }],
 "loop": true,
 "name": &"idle_up",
@@ -50,10 +50,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_4hl6n")
+"texture": ExtResource("6_46lci")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_1ubtu")
+"texture": ExtResource("7_y3q4d")
 }],
 "loop": true,
 "name": &"walk_down",
@@ -61,10 +61,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_7s4i2")
+"texture": ExtResource("3_esmt1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_uylwp")
+"texture": ExtResource("8_n1qpd")
 }],
 "loop": true,
 "name": &"walk_left",
@@ -72,10 +72,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_la2ey")
+"texture": ExtResource("4_w40k5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_dvo7o")
+"texture": ExtResource("9_2xs00")
 }],
 "loop": true,
 "name": &"walk_right",
@@ -83,10 +83,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_w4f8o")
+"texture": ExtResource("10_ool0x")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_wdt0n")
+"texture": ExtResource("11_i36sn")
 }],
 "loop": true,
 "name": &"walk_up",
@@ -95,7 +95,7 @@ animations = [{
 
 [node name="Zombie" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
-collision_mask = 12
+collision_mask = 13
 script = ExtResource("1_60p8g")
 metadata/_edit_group_ = true
 
@@ -111,4 +111,4 @@ debug_enabled = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_5lm40")
-animation = &"idle_left"
+animation = &"idle_down"
