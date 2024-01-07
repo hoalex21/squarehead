@@ -106,7 +106,6 @@ shape = SubResource("RectangleShape2D_unnme")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_postprocessing = 1
 avoidance_enabled = true
-debug_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.15, 0.15)

@@ -65,7 +65,7 @@ func _process(delta):
 					var heart = heart_scene.instantiate()
 					heart.position = global_position
 					get_parent().add_child(heart)
-					
+				
 				get_parent().score_add(100)
 				queue_free()
 				collider.hit_enemy()
