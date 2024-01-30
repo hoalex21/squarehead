@@ -5,6 +5,8 @@
 [ext_resource type="Theme" uid="uid://1a1x3iilp1q6" path="res://menu_theme.tres" id="3_l08ts"]
 
 [sub_resource type="Gradient" id="Gradient_ty78j"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_s1a5t"]
 gradient = SubResource("Gradient_ty78j")
